@@ -1,7 +1,7 @@
 <?php
 
-//   SNACK 1
-//   Creiamo un array contenente le partite di basket di un’ipotetica tappa del calendario. Ogni array avrà una squadra di casa e una squadra ospite, punti fatti dalla squadra di casa e punti fatti dalla squadra ospite. Stampiamo a schermo tutte le partite con questo schema : Olimpia Milano - Cantù | 55-60
+// SNACK 1
+// Creiamo un array contenente le partite di basket di un’ipotetica tappa del calendario. Ogni array avrà una squadra di casa e una squadra ospite, punti fatti dalla squadra di casa e punti fatti dalla squadra ospite. Stampiamo a schermo tutte le partite con questo schema : Olimpia Milano - Cantù | 55-60
 
 $partite = [
     [
@@ -117,7 +117,65 @@ function getArrayOfIntegers($min, $max, $nItems)
     }
     return $newArray;
 }
-// getArrayOfIntegers(1, 100, 10);
+
+// SNACK 5
+// Prendere un paragrafo abbastanza lungo, contenente diverse frasi. Prendere il paragrafo e suddividerlo in tanti paragrafi. Ogni punto un nuovo paragrafo.
+$paragrafo = "Il Lonfo non vaterca né gluisce e molto raramente barigatta. Ma quando soffia il bego a bisce bisce sdilenca un poco e gnagio s’archipatta. È frusco il Lonfo! È pieno di lupigna arrafferia malversa e sofolenta! Se cionfi ti sbiduglia e ti arrupigna se lugri ti botalla e ti criventa. Eppure il vecchio Lonfo ammargelluto che bete e zugghia e fonca nei trombazzi fa lègica busìa, fa gisbuto; e quasi quasi in segno di sberdazzi gli affarferesti un gniffo. Ma lui zuto t’alloppa, ti sbernecchia; e tu l’accazzi.";
+$arrayFrasi = explode(".", $paragrafo);
+array_pop($arrayFrasi);
+// var_dump($arrayFrasi);
+
+// SNACK 6
+// Utilizzare questo array: https://pastebin.com/CkX3680A. Stampiamo il nostro array mettendo gli insegnanti in un rettangolo grigio e i PM in un rettangolo verde.
+$db = [
+    'teachers' => [
+        [
+            'name' => 'Michele',
+            'lastname' => 'Papagni'
+        ],
+        [
+            'name' => 'Fabio',
+            'lastname' => 'Forghieri'
+        ]
+    ],
+    'pm' => [
+        [
+            'name' => 'Roberto',
+            'lastname' => 'Marazzini'
+        ],
+        [
+            'name' => 'Federico',
+            'lastname' => 'Pellegrini'
+        ]
+    ]
+];
+
+// SNACK 7 
+// Creare un array contenente qualche alunno di un’ipotetica classe. Ogni alunno avrà Nome, Cognome e un array contenente i suoi voti scolastici. Stampare Nome, Cognome e la media dei voti di ogni alunno.
+
+$alunni = [
+    [
+        'name' => 'Mario',
+        'lastname' => 'Guidi',
+        'voti' => [
+            6, 5, 8, 10, 3
+        ]
+    ],
+    [
+        'name' => 'Michele',
+        'lastname' => 'Bassi',
+        'voti' => [
+            2, 3, 6, 0, 3
+        ]
+    ],
+    [
+        'name' => 'Claudia',
+        'lastname' => 'Polli',
+        'voti' => [
+            9, 7, 6, 5, 8
+        ]
+    ],
+];
 
 ?>
 
@@ -233,6 +291,15 @@ function getArrayOfIntegers($min, $max, $nItems)
         <h1> Snack 5 </h1>
 
         <!-- inserire qui il codice dello snack (aprire i tag php se necessario) -->
+        <p><strong>Paragrafo intero:</strong> <?php echo $paragrafo ?></p>
+        <ul>
+            <li><?php for ($i = 0; $i < count($arrayFrasi); $i++) {
+                    $y = $i + 1;
+                    echo  "<strong>Paragrafo $y</strong>: $arrayFrasi[$i] <br>";
+                } ?>
+            </li>
+        </ul>
+
 
     </section>
 
@@ -242,6 +309,22 @@ function getArrayOfIntegers($min, $max, $nItems)
 
         <!-- inserire qui il codice dello snack (aprire i tag php se necessario) -->
 
+        <p class="grey">
+            <?php foreach ($db['teachers'] as $x => $val) {
+                foreach ($val as $y => $value) {
+                    echo "$value ";
+                }
+            } ?>
+        </p>
+
+        <p class="green">
+            <?php foreach ($db['pm'] as $x => $val) {
+                foreach ($val as $y => $value) {
+                    echo "$value ";
+                }
+            } ?>
+        </p>
+
     </section>
 
     <section id="snack7">
@@ -249,6 +332,17 @@ function getArrayOfIntegers($min, $max, $nItems)
         <h1> Snack 7 </h1>
 
         <!-- inserire qui il codice dello snack (aprire i tag php se necessario) -->
+        <p>
+            <?php for ($i = 0; $i < count($alunni); $i++) {
+                // var_dump($alunni[$i]['voti']);
+                $average = array_sum($alunni[$i]['voti']) / count($alunni[$i]['voti']);
+                $y = $i + 1;
+                echo "Studente $y: ";
+                echo "{$alunni[$i]['name']} ";
+                echo "{$alunni[$i]['lastname']} - ";
+                echo "Media voto: ($average) <br>";
+            } ?>
+        </p>
 
     </section>
 
